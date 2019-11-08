@@ -4,8 +4,11 @@
 ### Download Links:
 
 8.90.2 : https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
+
 8.80.2 : https://download.checkmarx.com/8.8.0/Plugins/CxConsolePlugin-8.80.2.zip
+
 8.70.4 : https://download.checkmarx.com/8.7.0/Plugins/CxConsolePlugin-8.70.4.zip
+
 8.60.3 : https://download.checkmarx.com/8.6.0/Plugins/CxConsolePlugin-8.60.3.zip
 
 #### CxCLI Documentation: 
