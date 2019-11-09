@@ -17,7 +17,7 @@ jobs:
         docker tag cxcli:latest miguelfreitas93/cxcli:latest
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:latest
@@ -33,7 +33,7 @@ jobs:
         docker tag cxcli:8.90.2 miguelfreitas93/cxcli:8.90.2
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.90.2
@@ -49,7 +49,7 @@ jobs:
         docker tag cxcli:8.80.2 miguelfreitas93/cxcli:8.80.2
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.80.2
@@ -65,7 +65,7 @@ jobs:
         docker tag cxcli:8.70.4 miguelfreitas93/cxcli:8.70.4
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.70.4
@@ -81,7 +81,7 @@ jobs:
         docker tag cxcli:8.60.3 miguelfreitas93/cxcli:8.60.3
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.60.3
