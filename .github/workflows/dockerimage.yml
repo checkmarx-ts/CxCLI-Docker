@@ -1,0 +1,87 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  latest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker build -t cxcli:latest . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
+    - name: Tag Docker Image
+      run: |
+        docker tag cxcli:latest miguelfreitas93/cxcli:latest
+    - name: Docker Login
+      run: |
+        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+    - name: Docker Push
+      run: |
+        docker push miguelfreitas93/cxcli:latest
+  8.9.0:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker build -t cxcli:8.90.2 . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
+    - name: Tag Docker Image
+      run: |
+        docker tag cxcli:8.90.2 miguelfreitas93/cxcli:8.90.2
+    - name: Docker Login
+      run: |
+        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+    - name: Docker Push
+      run: |
+        docker push miguelfreitas93/cxcli:8.90.2
+  8.8.0:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker build -t cxcli:8.80.2 . --no-cache --build-arg CX_CLI_VERSION=8.80.2 --build-arg CX_VERSION=8.8.0 
+    - name: Tag Docker Image
+      run: |
+        docker tag cxcli:8.80.2 miguelfreitas93/cxcli:8.80.2
+    - name: Docker Login
+      run: |
+        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+    - name: Docker Push
+      run: |
+        docker push miguelfreitas93/cxcli:8.80.2
+  8.7.0:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker build -t cxcli:8.70.4 . --no-cache --build-arg CX_CLI_VERSION=8.70.4 --build-arg CX_VERSION=8.7.0 
+    - name: Tag Docker Image
+      run: |
+        docker tag cxcli:8.70.4 miguelfreitas93/cxcli:8.70.4
+    - name: Docker Login
+      run: |
+        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+    - name: Docker Push
+      run: |
+        docker push miguelfreitas93/cxcli:8.70.4
+  8.6.0:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker build -t cxcli:8.60.3 . --no-cache --build-arg CX_CLI_VERSION=8.60.3 --build-arg CX_VERSION=8.6.0 
+    - name: Tag Docker Image
+      run: |
+        docker tag cxcli:8.60.3 miguelfreitas93/cxcli:8.60.3
+    - name: Docker Login
+      run: |
+        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+    - name: Docker Push
+      run: |
+        docker push miguelfreitas93/cxcli:8.60.3
