@@ -17,11 +17,11 @@ jobs:
         docker tag cxcli:latest miguelfreitas93/cxcli:latest
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:latest
-  "8.9.0":
+  "_8_9_0":
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -33,11 +33,11 @@ jobs:
         docker tag cxcli:8.90.2 miguelfreitas93/cxcli:8.90.2
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.90.2
-  "8.8.0":
+  "_8_8_0":
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -49,11 +49,11 @@ jobs:
         docker tag cxcli:8.80.2 miguelfreitas93/cxcli:8.80.2
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.80.2
-  "8.7.0":
+  "_8_7_0":
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -65,11 +65,11 @@ jobs:
         docker tag cxcli:8.70.4 miguelfreitas93/cxcli:8.70.4
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.70.4
-  "8.6.0":
+  "_8_6_0":
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -81,7 +81,7 @@ jobs:
         docker tag cxcli:8.60.3 miguelfreitas93/cxcli:8.60.3
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p {{secrets.DOCKER_PASSWORD}}
+        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
         docker push miguelfreitas93/cxcli:8.60.3
