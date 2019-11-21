@@ -31,7 +31,7 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build -t cxcli:8.90.2 . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
-    - name: Tag Docker Image
+    - name: Tag Docker Image 
       run: |
         docker tag cxcli:8.90.2 docker.pkg.github.com/miguelfreitas93/cxcli-docker/cxcli:8.90.2
         docker tag cxcli:8.90.2 miguelfreitas93/cxcli:8.90.2
