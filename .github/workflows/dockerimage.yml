@@ -18,10 +18,10 @@ jobs:
         docker tag cxcli:latest miguelfreitas93/cxcli:latest
     - name: Docker Login
       run: |
+        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_TOKEN}}
         docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_PASSWORD}}
         docker push docker.pkg.github.com/miguelfreitas93/cxcli-docker/cxcli:latest
         docker push miguelfreitas93/cxcli:latest
   "_8_9_0":
@@ -37,10 +37,10 @@ jobs:
         docker tag cxcli:8.90.2 miguelfreitas93/cxcli:8.90.2
     - name: Docker Login
       run: |
+        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_TOKEN}}
         docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_PASSWORD}}
         docker push docker.pkg.github.com/miguelfreitas93/cxcli-docker/cxcli:8.90.2
         docker push miguelfreitas93/cxcli:8.90.2
   "_8_8_0":
@@ -56,10 +56,10 @@ jobs:
         docker tag cxcli:8.80.2 miguelfreitas93/cxcli:8.80.2
     - name: Docker Login
       run: |
+        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_TOKEN}}
         docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_PASSWORD}}
         docker push docker.pkg.github.com/miguelfreitas93/cxcli-docker/cxcli:8.80.2
         docker push miguelfreitas93/cxcli:8.80.2
   "_8_7_0":
@@ -75,10 +75,10 @@ jobs:
         docker tag cxcli:8.70.4 miguelfreitas93/cxcli:8.70.4
     - name: Docker Login
       run: |
+        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_TOKEN}}
         docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_PASSWORD}}
         docker push docker.pkg.github.com/miguelfreitas93/cxcli-docker/cxcli:8.70.4
         docker push miguelfreitas93/cxcli:8.70.4
   "_8_6_0":
@@ -94,9 +94,9 @@ jobs:
         docker tag cxcli:8.60.3 miguelfreitas93/cxcli:8.60.3
     - name: Docker Login
       run: |
+        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_TOKEN}}
         docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker login docker.pkg.github.com -u miguelfreitas93 -p ${{secrets.GITHUB_PASSWORD}}
         docker push docker.pkg.github.com/miguelfreitas93/cxcli-docker/cxcli:8.60.3
         docker push miguelfreitas93/cxcli:8.60.3
