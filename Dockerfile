@@ -22,6 +22,7 @@ RUN curl ${CX_CLI_URL} -o cli.zip && \
     unzip cli.zip && \
     rm -rf cli.zip && \
     cd CxConsolePlugin-${CX_CLI_VERSION} && \
+    rm -rf Examples && \
     chmod +x runCxConsole.sh
 
 WORKDIR /opt/CxConsolePlugin-${CX_CLI_VERSION}
