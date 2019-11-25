@@ -10,13 +10,15 @@ on:
 jobs:
   latest:
     env:
-      CLI_VERSION: "$PKG_NAME:latest"
+      CLI_VERSION: "cxcli:latest"
+      CX_CLI_VERSION: "8.90.2"
+      CX_VERSION: "8.9.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
+        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
         docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
@@ -31,13 +33,15 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_9_0":
     env:
-      CLI_VERSION: "$PKG_NAME:8.90.2"
+      CLI_VERSION: "cxcli:8.90.2"
+      CX_CLI_VERSION: "8.90.2"
+      CX_VERSION: "8.9.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
+        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION 
     - name: Tag Docker Image 
       run: |
         docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
@@ -52,13 +56,15 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_8_0":
     env:
-      CLI_VERSION: "$PKG_NAME:8.80.2"
+      CLI_VERSION: "cxcli:8.80.2"
+      CX_CLI_VERSION: "8.80.2"
+      CX_VERSION: "8.8.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.80.2 --build-arg CX_VERSION=8.8.0 
+        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
         docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
@@ -73,13 +79,15 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_7_0":
     env:
-      CLI_VERSION: "$PKG_NAME:8.70.4"
+      CLI_VERSION: "cxcli:8.70.4"
+      CX_CLI_VERSION: "8.70.4"
+      CX_VERSION: "8.7.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.70.4 --build-arg CX_VERSION=8.7.0 
+        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
         docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
@@ -94,13 +102,15 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_6_0":
     env:
-      CLI_VERSION: "$PKG_NAME:8.60.3"
+      CLI_VERSION: "cxcli:8.60.3"
+      CX_CLI_VERSION: "8.60.3"
+      CX_VERSION: "8.6.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.60.3 --build-arg CX_VERSION=8.6.0 
+        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
         docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
