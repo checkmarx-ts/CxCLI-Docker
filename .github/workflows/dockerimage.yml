@@ -14,7 +14,7 @@ jobs:
         docker build -t cxcli:latest . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:latest docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:latest
+        docker tag cxcli:latest docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:latest
         docker tag cxcli:latest $GITHUB_ACTOR/cxcli:latest
     - name: Docker Login
       run: |
@@ -22,7 +22,7 @@ jobs:
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:latest
+        docker push docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:latest
         docker push $GITHUB_ACTOR/cxcli:latest
   "_8_9_0":
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
         docker build -t cxcli:8.90.2 . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
     - name: Tag Docker Image 
       run: |
-        docker tag cxcli:8.90.2 docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.90.2
+        docker tag cxcli:8.90.2 docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.90.2
         docker tag cxcli:8.90.2 $GITHUB_ACTOR/cxcli:8.90.2
     - name: Docker Login
       run: |
@@ -41,7 +41,7 @@ jobs:
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.90.2
+        docker push docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.90.2
         docker push $GITHUB_ACTOR/cxcli:8.90.2
   "_8_8_0":
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
         docker build -t cxcli:8.80.2 . --no-cache --build-arg CX_CLI_VERSION=8.80.2 --build-arg CX_VERSION=8.8.0 
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:8.80.2 docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.80.2
+        docker tag cxcli:8.80.2 docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.80.2
         docker tag cxcli:8.80.2 $GITHUB_ACTOR/cxcli:8.80.2
     - name: Docker Login
       run: |
@@ -60,7 +60,7 @@ jobs:
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.80.2
+        docker push docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.80.2
         docker push $GITHUB_ACTOR/cxcli:8.80.2
   "_8_7_0":
     runs-on: ubuntu-latest
@@ -71,7 +71,7 @@ jobs:
         docker build -t cxcli:8.70.4 . --no-cache --build-arg CX_CLI_VERSION=8.70.4 --build-arg CX_VERSION=8.7.0 
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:8.70.4 docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.70.4
+        docker tag cxcli:8.70.4 docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.70.4
         docker tag cxcli:8.70.4 $GITHUB_ACTOR/cxcli:8.70.4
     - name: Docker Login
       run: |
@@ -79,7 +79,7 @@ jobs:
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.70.4
+        docker push docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.70.4
         docker push $GITHUB_ACTOR/cxcli:8.70.4
   "_8_6_0":
     runs-on: ubuntu-latest
@@ -90,7 +90,7 @@ jobs:
         docker build -t cxcli:8.60.3 . --no-cache --build-arg CX_CLI_VERSION=8.60.3 --build-arg CX_VERSION=8.6.0 
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:8.60.3 docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.60.3
+        docker tag cxcli:8.60.3 docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.60.3
         docker tag cxcli:8.60.3 $GITHUB_ACTOR/cxcli:8.60.3
     - name: Docker Login
       run: |
@@ -98,5 +98,5 @@ jobs:
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/cxcli:8.60.3
+        docker push docker.pkg.github.com/$GITHUB_REPOSITORY/cxcli:8.60.3
         docker push $GITHUB_ACTOR/cxcli:8.60.3
