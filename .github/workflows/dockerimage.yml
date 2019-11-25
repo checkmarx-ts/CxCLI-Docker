@@ -2,6 +2,7 @@ name: Docker Image CI
 env:
   REPO_NAME: "cxcli-docker"
   DOCKER_GITHUB: "docker.pkg.github.com"
+  PKG_NAME: "cxcli"
 on:
   push:
     branches: 
@@ -9,7 +10,7 @@ on:
 jobs:
   latest:
     env:
-      CLI_VERSION: "cxcli:latest"
+      CLI_VERSION: "$PKG_NAME:latest"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -30,7 +31,7 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_9_0":
     env:
-      CLI_VERSION: "cxcli:8.90.2"
+      CLI_VERSION: "$PKG_NAME:8.90.2"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -51,7 +52,7 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_8_0":
     env:
-      CLI_VERSION: "cxcli:8.80.2"
+      CLI_VERSION: "$PKG_NAME:8.80.2"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -72,7 +73,7 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_7_0":
     env:
-      CLI_VERSION: "cxcli:8.70.4"
+      CLI_VERSION: "$PKG_NAME:8.70.4"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -93,7 +94,7 @@ jobs:
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_6_0":
     env:
-      CLI_VERSION: "cxcli:8.60.3"
+      CLI_VERSION: "$PKG_NAME:8.60.3"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
