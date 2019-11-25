@@ -1,5 +1,7 @@
 name: Docker Image CI
-
+env:
+  REPO_NAME: "cxcli-docker"
+  DOCKER_GITHUB: "docker.pkg.github.com"
 on:
   push:
     branches: 
@@ -16,15 +18,15 @@ jobs:
         docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
     - name: Tag Docker Image
       run: |
-        docker tag $CLI_VERSION docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker tag $CLI_VERSION $GITHUB_ACTOR/$CLI_VERSION
     - name: Docker Login
       run: |
-        docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_9_0":
     env:
@@ -34,18 +36,18 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t cxcli:8.90.2 . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
+        docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
     - name: Tag Docker Image 
       run: |
-        docker tag $CLI_VERSION docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker tag $CLI_VERSION $GITHUB_ACTOR/$CLI_VERSION
     - name: Docker Login
       run: |
-        docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_8_0":
     env:
@@ -58,15 +60,15 @@ jobs:
         docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.80.2 --build-arg CX_VERSION=8.8.0 
     - name: Tag Docker Image
       run: |
-        docker tag $CLI_VERSION docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker tag $CLI_VERSION $GITHUB_ACTOR/$CLI_VERSION
     - name: Docker Login
       run: |
-        docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_7_0":
     env:
@@ -79,15 +81,15 @@ jobs:
         docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.70.4 --build-arg CX_VERSION=8.7.0 
     - name: Tag Docker Image
       run: |
-        docker tag $CLI_VERSION docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker tag $CLI_VERSION $GITHUB_ACTOR/$CLI_VERSION
     - name: Docker Login
       run: |
-        docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker push $GITHUB_ACTOR/$CLI_VERSION
   "_8_6_0":
     env:
@@ -100,13 +102,13 @@ jobs:
         docker build -t $CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=8.60.3 --build-arg CX_VERSION=8.6.0 
     - name: Tag Docker Image
       run: |
-        docker tag $CLI_VERSION docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker tag $CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker tag $CLI_VERSION $GITHUB_ACTOR/$CLI_VERSION
     - name: Docker Login
       run: |
-        docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
         docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push docker.pkg.github.com/$GITHUB_ACTOR/cxcli-docker/$CLI_VERSION
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$CLI_VERSION
         docker push $GITHUB_ACTOR/$CLI_VERSION
