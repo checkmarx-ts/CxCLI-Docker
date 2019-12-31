@@ -21,9 +21,13 @@ RUN curl ${CX_CLI_URL} -o cli.zip && \
     rm -rf /var/cache/apk/* && \
     unzip cli.zip && \
     rm -rf cli.zip && \
-    cd CxConsolePlugin-${CX_CLI_VERSION} && \
-    chmod +x runCxConsole.sh
+    mv CxConsolePlugin-${CX_CLI_VERSION} cxcli && \
+    cd cxcli && \
+    rm -rf Examples && \
+    mv CxConsolePlugin-CLI-${CX_CLI_VERSION}.jar cxcli.jar && \
+    chmod +x runCxConsole.sh && \
+    chmod +x runCxConsole.cmd
 
-WORKDIR /opt/CxConsolePlugin-${CX_CLI_VERSION}
+WORKDIR /opt/cxcli
 
 CMD ["sh", "runCxConsole.sh", "Scan"]
