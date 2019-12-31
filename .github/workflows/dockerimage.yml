@@ -1,87 +1,120 @@
 name: Docker Image CI
-
+env:
+  REPO_NAME: "cxcli-docker"
+  DOCKER_GITHUB: "docker.pkg.github.com"
+  PKG_NAME: "cxcli"
 on:
   push:
     branches: 
       - master
 jobs:
   latest:
+    env:
+      CX_CLI_VERSION: "8.90.2"
+      CX_VERSION: "8.9.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t cxcli:latest . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
+        docker build -t $PKG_NAME:latest . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:latest miguelfreitas93/cxcli:latest
+        docker tag $PKG_NAME:latest $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:latest
+        docker tag $PKG_NAME:latest $GITHUB_ACTOR/$PKG_NAME:latest
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push miguelfreitas93/cxcli:latest
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:latest
+        docker push $GITHUB_ACTOR/$PKG_NAME:latest
   "_8_9_0":
+    env:
+      CX_CLI_VERSION: "8.90.2"
+      CX_VERSION: "8.9.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t cxcli:8.90.2 . --no-cache --build-arg CX_CLI_VERSION=8.90.2 --build-arg CX_VERSION=8.9.0 
-    - name: Tag Docker Image
+        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION 
+    - name: Tag Docker Image 
       run: |
-        docker tag cxcli:8.90.2 miguelfreitas93/cxcli:8.90.2
+        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker tag $PKG_NAME:$CX_CLI_VERSION $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push miguelfreitas93/cxcli:8.90.2
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker push $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
   "_8_8_0":
+    env:
+      CX_CLI_VERSION: "8.80.2"
+      CX_VERSION: "8.8.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t cxcli:8.80.2 . --no-cache --build-arg CX_CLI_VERSION=8.80.2 --build-arg CX_VERSION=8.8.0 
+        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:8.80.2 miguelfreitas93/cxcli:8.80.2
+        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker tag $PKG_NAME:$CX_CLI_VERSION $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push miguelfreitas93/cxcli:8.80.2
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker push $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
   "_8_7_0":
+    env:
+      CX_CLI_VERSION: "8.70.4"
+      CX_VERSION: "8.7.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t cxcli:8.70.4 . --no-cache --build-arg CX_CLI_VERSION=8.70.4 --build-arg CX_VERSION=8.7.0 
+        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:8.70.4 miguelfreitas93/cxcli:8.70.4
+        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker tag $PKG_NAME:$CX_CLI_VERSION $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push miguelfreitas93/cxcli:8.70.4
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker push $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
   "_8_6_0":
+    env:
+      CX_CLI_VERSION: "8.60.3"
+      CX_VERSION: "8.6.0"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t cxcli:8.60.3 . --no-cache --build-arg CX_CLI_VERSION=8.60.3 --build-arg CX_VERSION=8.6.0 
+        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_VERSION=$CX_CLI_VERSION --build-arg CX_VERSION=$CX_VERSION
     - name: Tag Docker Image
       run: |
-        docker tag cxcli:8.60.3 miguelfreitas93/cxcli:8.60.3
+        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker tag $PKG_NAME:$CX_CLI_VERSION $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
     - name: Docker Login
       run: |
-        docker login -u miguelfreitas93 -p ${{secrets.DOCKER_PASSWORD}}
+        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+        docker login -u $GITHUB_ACTOR -p ${{secrets.DOCKER_PASSWORD}}
     - name: Docker Push
       run: |
-        docker push miguelfreitas93/cxcli:8.60.3
+        docker push $DOCKER_GITHUB/$GITHUB_ACTOR/$REPO_NAME/$PKG_NAME:$CX_CLI_VERSION
+        docker push $GITHUB_ACTOR/$PKG_NAME:$CX_CLI_VERSION
