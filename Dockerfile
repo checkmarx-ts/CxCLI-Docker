@@ -24,7 +24,6 @@ RUN curl ${CX_CLI_URL} -o cli.zip && \
     mv CxConsolePlugin-${CX_CLI_VERSION} cxcli && \
     cd cxcli && \
     rm -rf Examples && \
-    mv CxConsolePlugin-CLI-${CX_CLI_VERSION}.jar cxcli.jar && \
     chmod +x runCxConsole.sh && \
     chmod +x runCxConsole.cmd
 
