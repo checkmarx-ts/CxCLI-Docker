@@ -2,6 +2,15 @@ FROM openjdk:jre-alpine
 
 LABEL Miguel Freitas <miguel.freitas@checkmarx.com>
 
+# Example of how to include certificate to java certificate store if needed
+# By Joao Costa <joao.costa@checkmarx.com>
+# Place .crt file in the same folder as your Dockerfile, CA certificate as the example below
+#     ARG CACERT="asterisk.crt"
+# Copy the certificate to the docker machine
+#     COPY $CACERT /opt/workdir/
+# Run command to apply the cetificate to java certificate store
+#     RUN keytool -importcert -file $CACERT -alias $CACERT -keystore cacerts -storepass changeit -noprompt
+
 #ARG CX_CLI_VERSION="8.60.3"
 #ARG CX_CLI_VERSION="8.70.4"
 #ARG CX_CLI_VERSION="8.80.2"
