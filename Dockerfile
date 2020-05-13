@@ -1,4 +1,4 @@
-FROM openjdk:jre-alpine
+FROM openjdk:8-jdk-alpine
 
 LABEL Miguel Freitas <miguel.freitas@checkmarx.com>
 
