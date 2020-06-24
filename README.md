@@ -4,7 +4,7 @@
 https://hub.docker.com/r/miguelfreitas93/cxcli
 
 ### Download Links:
-9.00.0 (latest) : https://download.checkmarx.com/9.0.0/Plugins/cli-2020.1.12.zip
+9.00.0 (latest) : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip
 
 8.90.2 : https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
 

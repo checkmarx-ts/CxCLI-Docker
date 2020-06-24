@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-alpine
 
 LABEL Miguel Freitas <miguel.freitas@checkmarx.com>
 
-ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/cli-2020.1.12.zip"
+ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
 
 RUN apk add --no-cache --update curl python jq bash && \
     rm -rf /var/cache/apk/*
@@ -14,6 +14,7 @@ COPY *.crt *.cer import_certs.sh /certs/
 RUN curl ${CX_CLI_URL} -o cli.zip && \
     unzip cli.zip && \
     rm -rf cli.zip && \
+    ls -l && \
     mv CxConsolePlugin-* cxcli && \
     cd cxcli && \
     # Fix DOS/Windows EOL encoding, if it exists
