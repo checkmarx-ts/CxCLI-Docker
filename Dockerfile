@@ -11,11 +11,11 @@ WORKDIR /opt
 
 COPY *.crt *.cer import_certs.sh /certs/
 
-RUN curl ${CX_CLI_URL} -o cli.zip && \
+RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
+    curl ${CX_CLI_URL} -o cli.zip && \
     unzip cli.zip && \
     rm -rf cli.zip && \
-    ls -l && \
-    mv CxConsolePlugin-* cxcli && \
+    ( [ -d CxConsolePlugin-* ] && mv CxConsolePlugin-* cxcli || { mkdir cxcli; cp -r $(ls | grep -v cxcli) cxcli; rm -rf $(ls | grep -v cxcli); } ) && \ 
     cd cxcli && \
     # Fix DOS/Windows EOL encoding, if it exists
     cat -v runCxConsole.sh | sed -e "s/\^M$//" > runCxConsole-fixed.sh && \
