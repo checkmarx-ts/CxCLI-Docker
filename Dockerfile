@@ -9,8 +9,16 @@ RUN apk add --no-cache --update curl python jq bash && \
 
 WORKDIR /opt
 
-COPY *.crt *.cer import_certs.sh /certs/
+# Certificates
+COPY *.crt *.cer import_certs.sh ./certs/
 
+RUN cd certs && \
+    chmod +x import_certs.sh && \
+    ./import_certs.sh && \
+    cd .. && \
+    rm -rf certs
+
+# CLI
 RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
     curl ${CX_CLI_URL} -o cli.zip && \
     unzip cli.zip && \
@@ -22,13 +30,8 @@ RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
     rm -f runCxConsole.sh && \
     mv runCxConsole-fixed.sh runCxConsole.sh && \
     rm -rf Examples && \
-    chmod +x runCxConsole.sh && \
-    chmod +x /certs/import_certs.sh && \
-    /certs/import_certs.sh && \
-    rm -rf /certs
-
+    chmod +x runCxConsole.sh
 
 WORKDIR /opt/cxcli
 
 ENTRYPOINT ["/opt/cxcli/runCxConsole.sh"]
-

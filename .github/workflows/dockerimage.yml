@@ -10,22 +10,23 @@ on:
 jobs:
   latest:
     env:
+      CX_CLI_VERSION: "latest"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: |
-        docker build -t $PKG_NAME:latest . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
+        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
     - name: Tag Docker Image
       run: |
-        docker tag $PKG_NAME:latest $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:latest
+        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
     - name: Docker Login
       run: |
         docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
     - name: Docker Push
       run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:latest
+        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_2020_2_18":
     env:
       CX_CLI_VERSION: "2020.2.18"
