@@ -15,8 +15,7 @@ COPY *.crt *.cer import_certs.sh ./certs/
 RUN cd certs && \
     chmod +x import_certs.sh && \
     ./import_certs.sh && \
-    cd .. && \
-    rm -rf certs
+    cd ..
 
 # CLI
 RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
