@@ -23,6 +23,7 @@ RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
     mv runCxConsole-fixed.sh runCxConsole.sh && \
     rm -rf Examples && \
     chmod +x runCxConsole.sh && \
+    chmod +x /certs/import_certs.sh && \
     /certs/import_certs.sh && \
     rm -rf /certs
 
