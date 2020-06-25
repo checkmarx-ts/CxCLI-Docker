@@ -19,6 +19,9 @@ jobs:
     - uses: anchore/scan-action@master
       with:
         dockerfile-path: "Dockerfile"
+        image-reference: "openjdk:8-jdk-alpine"
         fail-build: false
     - name: anchore inline scan JSON results
       run: for j in `ls ./anchore-reports/*.json`; do echo "---- ${j} ----"; cat ${j}; echo; done
+    - name: List Files
+      run: ls -la
