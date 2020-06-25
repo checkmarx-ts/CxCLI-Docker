@@ -1,0 +1,29 @@
+name: Container Scanning
+env:
+  PKG_NAME: "cxcli"
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  latest:
+    env:
+      CX_CLI_VERSION: "latest"
+      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: |
+        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
+    - uses: anchore/scan-action@master
+      with:
+        image-reference: $PKG_NAME:$CX_CLI_VERSION
+        dockerfile-path: Dockerfile
+        fail-build: false
+    - name: anchore inline scan JSON results
+      run: for j in `ls ./anchore-reports/*.json`; do echo "---- ${j} ----"; cat ${j}; echo; done
+    - name: upload Anchore scan SARIF report
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: results.sarif
