@@ -7,12 +7,17 @@ on:
   push:
     branches: 
       - master
+strategy:
+  matrix:
+    os:
+      - ubuntu-latest
+      - windows-latest
 jobs:
   latest:
     env:
       CX_CLI_VERSION: "latest"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
