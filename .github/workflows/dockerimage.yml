@@ -14,7 +14,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -33,7 +33,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -52,7 +52,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.7.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -71,7 +71,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.3.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -90,7 +90,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.1.12.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -109,7 +109,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.1.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -128,7 +128,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.2.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -147,7 +147,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -166,7 +166,7 @@ jobs:
       CX_CLI_URL: "https://download.checkmarx.com/8.8.0/Plugins/CxConsolePlugin-8.80.4.zip"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
