@@ -1,7 +1,7 @@
 # CxCLI-Docker
 ### Checkmarx CLI with Docker
 
-https://hub.docker.com/r/miguelfreitas93/cxcli
+https://github.com/checkmarx-ts/CxCLI-Docker/packages/60289/versions
 
 ### Download Links:
 9.00.0 (latest) : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip
@@ -9,10 +9,6 @@ https://hub.docker.com/r/miguelfreitas93/cxcli
 8.90.2 : https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
 
 8.80.2 : https://download.checkmarx.com/8.8.0/Plugins/CxConsolePlugin-8.80.2.zip
-
-8.70.4 : https://download.checkmarx.com/8.7.0/Plugins/CxConsolePlugin-8.70.4.zip
-
-8.60.3 : https://download.checkmarx.com/8.6.0/Plugins/CxConsolePlugin-8.60.3.zip
 
 #### CxCLI Documentation: 
 
@@ -32,7 +28,6 @@ docker build -t cxcli:{version} . --no-cache
 *Insert a download URL from above to change the plugin version.*
 
 docker build --build-arg CX_CLI_URL="{download url}" -t cxcli:{version} . --no-cache
-
 
 
 ### Run Container:
