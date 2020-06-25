@@ -21,7 +21,43 @@ jobs:
         dockerfile-path: "Dockerfile"
         image-reference: "openjdk:8-jdk-alpine"
         fail-build: false
-    - name: anchore inline scan JSON results
-      run: for j in `ls ./anchore-reports/*.json`; do echo "---- ${j} ----"; cat ${j}; echo; done
-    - name: List Files
-      run: ls -la
+    - name: Upload Anchore Vulnerabilities
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: vulnerabilities.json
+        path: ./anchore-reports/vulnerabilities.json
+    - name: Upload Anchore Policy Evaluation
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: policy_evaluation.json
+        path: ./anchore-reports/policy_evaluation.json
+    - name: Upload Anchore Content
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: content.json
+        path: ./anchore-reports/content.json
+    - name: Upload Anchore Content - GEM
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: content-gem.json
+        path: ./anchore-reports/content-gem.json
+    - name: Upload Anchore Content - JAVA
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: content-java.json
+        path: ./anchore-reports/content-java.json
+    - name: Upload Anchore Content - OS
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: content-os.json
+        path: ./anchore-reports/content-os.json
+    - name: Upload Anchore Content - NPM
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: content-npm.json
+        path: ./anchore-reports/content-npm.json
+    - name: Upload Anchore Content - Python
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: content-python.json
+        path: ./anchore-reports/content-python.json
