@@ -2,6 +2,7 @@ name: Docker Image CI
 env:
   DOCKER_GITHUB: "docker.pkg.github.com"
   PKG_NAME: "cxcli"
+  GITHUB_REPOSITORY: "checkmarx-ts/cxcli-docker"
 on:
   push:
     branches: 
