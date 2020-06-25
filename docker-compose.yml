@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+  cxcli_latest:
+    image: cxcli:latest
+    container_name: cxcli_latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+  cxcli_2020.2.18:
+    image: cxcli:2020.2.18
+    container_name: cxcli_2020.2.18
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip
+  cxcli_2020.2.7:
+    image: cxcli:2020.2.7
+    container_name: cxcli_2020.2.7
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.7.zip
+  cxcli_2020.2.3:
+    image: cxcli:2020.2.3
+    container_name: cxcli_2020.2.3
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.3.zip
+  cxcli_2020.1.12:
+    image: cxcli:2020.1.12
+    container_name: cxcli_2020.1.12
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.1.12.zip
+  cxcli_9.00.2:
+    image: cxcli:9.00.2
+    container_name: cxcli_9.00.2
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.2.zip
+  cxcli_9.00.1:
+    image: cxcli:9.00.1
+    container_name: cxcli_9.00.1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.1.zip
+  cxcli_8.90.2:
+    image: cxcli:8.90.2
+    container_name: cxcli_8.90.2
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
+  cxcli_8.80.4:
+    image: cxcli:8.80.4
+    container_name: cxcli_8.80.4
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/8.8.0/Plugins/CxConsolePlugin-8.80.4.zip
