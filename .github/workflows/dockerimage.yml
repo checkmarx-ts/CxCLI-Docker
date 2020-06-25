@@ -7,13 +7,13 @@ on:
   push:
     branches: 
       - master
-strategy:
-  matrix:
-    os:
-      - ubuntu-latest
-      - windows-latest
 jobs:
   latest:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "latest"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
@@ -33,6 +33,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_2020_2_18":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "2020.2.18"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
@@ -52,6 +57,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_2020_2_7":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "2020.2.7"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.7.zip"
@@ -71,6 +81,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_2020_2_3":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "2020.2.3"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.3.zip"
@@ -90,6 +105,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_2020_1_12":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "2020.1.12"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.1.12.zip"
@@ -109,6 +129,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_9_00_2":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "9.00.2"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.2.zip"
@@ -128,6 +153,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_9_00_1":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "9.00.1"
       CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.1.zip"
@@ -147,6 +177,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_8_90_2":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "8.90.2"
       CX_CLI_URL: "https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip"
@@ -166,6 +201,11 @@ jobs:
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
   "_8_80_4":
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
     env:
       CX_CLI_VERSION: "8.80.4"
       CX_CLI_URL: "https://download.checkmarx.com/8.8.0/Plugins/CxConsolePlugin-8.80.4.zip"
