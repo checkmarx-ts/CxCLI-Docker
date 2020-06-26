@@ -18,4 +18,4 @@ jobs:
     - name: Build the Docker test image
       run: docker build -t $PKG_NAME:test_$CX_CLI_VERSION -f Dockerfile-test . --no-cache
     - name: Build the Docker test image
-      run: docker run -it $PKG_NAME:test_$CX_CLI_VERSION Scan -CxServer ${{secrets.CX_SAST_SERVER}} -CxUser ${{secrets.CX_SAST_USERNAME}} -CxPassword ${{secrets.CX_SAST_PASSWORD}} -ProjectName "${{secrets.CX_SAST_TEAM}}//$CX_PROJECT_NAME" -LocationType folder -LocationPath ./mycode -v
+      run: docker run $PKG_NAME:test_$CX_CLI_VERSION Scan -CxServer ${{secrets.CX_SAST_SERVER}} -CxUser ${{secrets.CX_SAST_USERNAME}} -CxPassword ${{secrets.CX_SAST_PASSWORD}} -ProjectName "${{secrets.CX_SAST_TEAM}}//$CX_PROJECT_NAME" -LocationType folder -LocationPath ./mycode -v
