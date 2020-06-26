@@ -1,4 +1,4 @@
-name: Container Scanning
+name: Test Docker Image
 env:
   PKG_NAME: "cxcli"
 on:
