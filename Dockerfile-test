@@ -1,0 +1,16 @@
+FROM docker.pkg.github.com/checkmarx-ts/cxcli-docker/cxcli:latest
+
+# Import Certs into Keystore - If Required
+COPY *.cer *.crt ./certs/
+
+RUN ls -la && \
+    cd certs && \
+    ./import_certs.sh && \
+    cd ..
+
+WORKDIR /opt
+
+#Copy Code
+
+COPY . ./mycode/
+

@@ -6,7 +6,9 @@ https://github.com/checkmarx-ts/CxCLI-Docker/packages/60289/versions
 ## Use CxCLI Docker Image
 
 Pull Image from Command Line:
+<access_token> - Should have Read Packages permission
 ```sh
+docker login docker.pkg.github.com -u <username> -p <access_token>
 docker pull docker.pkg.github.com/checkmarx-ts/cxcli-docker/cxcli:latest
 ```
 
