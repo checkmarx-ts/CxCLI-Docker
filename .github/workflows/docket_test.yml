@@ -16,6 +16,6 @@ jobs:
     - name: Docker Login
       run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
     - name: Build the Docker test image
-      run: docker build -t $PKG_NAME:$CX_CLI_VERSION:test -f Dockerfile-test . --no-cache
+      run: docker build -t $PKG_NAME:test_$CX_CLI_VERSION -f Dockerfile-test . --no-cache
     - name: Build the Docker test image
-      run: docker run -it $PKG_NAME:$CX_CLI_VERSION:test Scan -CxServer ${{secrets.CX_SAST_SERVER}} -CxUser ${{secrets.CX_SAST_USERNAME}} -CxPassword ${{secrets.CX_SAST_PASSWORD}} -ProjectName "${{secrets.CX_SAST_TEAM}}//$CX_PROJECT_NAME" -LocationType folder -LocationPath ./mycode -v
+      run: docker run -it $PKG_NAME:test_$CX_CLI_VERSION Scan -CxServer ${{secrets.CX_SAST_SERVER}} -CxUser ${{secrets.CX_SAST_USERNAME}} -CxPassword ${{secrets.CX_SAST_PASSWORD}} -ProjectName "${{secrets.CX_SAST_TEAM}}//$CX_PROJECT_NAME" -LocationType folder -LocationPath ./mycode -v
