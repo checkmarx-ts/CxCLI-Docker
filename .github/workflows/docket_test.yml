@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Docker Login
-      run: docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+      run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
     - name: Build the Docker test image
       run: docker build -t $PKG_NAME:$CX_CLI_VERSION:test -f Dockerfile-test . --no-cache
     - name: Build the Docker test image
