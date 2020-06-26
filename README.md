@@ -81,6 +81,45 @@ With Docker:
 ```sh
 docker run -it --name cxcli cxcli:{version}
 ```
+
+### Example how to use CLI image:
+
+Dockerfile example:
+```dockerfile
+FROM docker.pkg.github.com/checkmarx-ts/cxcli-docker/cxcli:latest
+
+# Import Certs into Keystore - If Required
+#COPY *.cer ./certs/
+#COPY *.crt ./certs/
+
+RUN ls -la && \
+    cd certs && \
+    ./import_certs.sh && \
+    cd ..
+
+WORKDIR /opt
+
+#Copy Code
+
+COPY . ./mycode/
+```
+
+Then login into Github Docker:
+<access_token> - Should have Read Packages permission
+```sh
+docker login docker.pkg.github.com -u <username> -p <access_token>
+```
+
+Build Image:
+```sh
+docker build -t my_custom_cxcli:latest . --no-cache
+```
+
+Run Container:
+```sh
+docker run my_custom_cxcli:latest Scan -CxServer http://localhost -CxUser admin@cx -CxPassword password -ProjectName /CxServer/SP/Company/Team/myproject -LocationType folder -LocationPath ./mycode -Log log.log -v
+```
+
 ### License
 
 MIT License
