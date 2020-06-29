@@ -1,0 +1,5 @@
+[perforce]
+name=Perforce
+baseurl=http://package.perforce.com/yum/rhel/7/x86_64
+enabled=1
+gpgcheck=1
