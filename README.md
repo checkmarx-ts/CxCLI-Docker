@@ -56,7 +56,9 @@ files to be excluded when the remainder of the source is zipped and submitted to
 ## Executing User-Defined Scripts
 
 After the source code is fetched from the SCM and before it is packaged for submission to the CxSAST server, executable files found in the `/post-fetch` folder will be executed in
-arbitrary order.  Typical use-cases for a post-fetch script are:
+arbitrary order.  Each script will receive the path to the root of the fetched code as the first argument, and the value of the `-locationtype` CxCLI argument as the second argument.
+
+Typical use-cases for a post-fetch script are:
 
 * Apply more customized logic to remove/rename files/paths with names that are incompatible with the Windows OS
 * Perform code organization to make it better suited to submit for CxSAST scanning
