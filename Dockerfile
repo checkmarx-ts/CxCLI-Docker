@@ -28,8 +28,7 @@ RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
     rm -rf Examples && \
     chmod +x runCxConsole.sh && \
     mkdir /post-fetch && \
-    /certs/import_certs.sh && \
-    rm -rf /certs
+    /certs/import_certs.sh 
 
 COPY scripts/* /opt/cxcli/
 
@@ -38,3 +37,8 @@ RUN chmod +x /opt/cxcli/entry.sh
 WORKDIR /opt/cxcli
 
 ENTRYPOINT ["/opt/cxcli/entry.sh"]
+
+ONBUILD COPY *.crt /certs/
+ONBUILD COPY *.cer /certs/
+ONBUILD RUN /certs/import_certs.sh
+
