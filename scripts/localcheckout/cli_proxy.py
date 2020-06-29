@@ -55,3 +55,7 @@ for entry in postFetchScripts:
             print (f'Execution of {entry} failed with value {code}')
 
 process = subprocess.run(["/opt/cxcli/runCxConsole.sh"] + args)
+
+# Propagate the CxCLI return code to the caller.
+return process.returncode
+
