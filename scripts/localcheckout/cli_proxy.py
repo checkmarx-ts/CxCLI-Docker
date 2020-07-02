@@ -1,7 +1,7 @@
 import sys
 import os
 import subprocess
-from scm import perforce, utils
+from scm import perforce, github, utils
 
 workspaceDir = "/workspace"
 
@@ -22,23 +22,14 @@ if sys.argv[1].lower() == 'localcheckout':
     if locationTypeValue.lower() == 'perforce':
         print ("-- PERFORCE")
         func = perforce.localcheckout
+    elif locationTypeValue.lower() == 'git':
+        print ("-- GIT")
+        func = github.localcheckout
     else:
         print (f"Location type {locationTypeValue} not supported.")
         exit(1)
-    # elif locationTypeValue.lower() == 'git':
-    #     print ("-- GIT")
-    #     func = None
-# TODO: Git and SVN
-
 
     args = func(normalizedArgs, workspaceDir)
-
-#  -locationpath <arg> - add this to set the path to the local folder, changes for perforce, new for git
-#  -locationbranch <arg>  - required for Git, not for perforce but appeanded to end of sync - should default to #head
-#  -locationurl <arg> - remove when changing it to folder
-#  -locationuser <arg> - remove and incorporate into the url
-#  -locationpassword <arg> - remove and incorporate into the url
-
 
 else:
     args = sys.argv[1:]
@@ -57,5 +48,5 @@ for entry in postFetchScripts:
 process = subprocess.run(["/opt/cxcli/runCxConsole.sh"] + args)
 
 # Propagate the CxCLI return code to the caller.
-return process.returncode
+exit (process.returncode)
 
