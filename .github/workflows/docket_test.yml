@@ -1,0 +1,21 @@
+name: Test Docker Image
+env:
+  PKG_NAME: "cxcli"
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  latest:
+    env:
+      CX_CLI_VERSION: "latest"
+      CX_PROJECT_NAME: "cxcli-docker"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Login
+      run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
+    - name: Build the Docker test image
+      run: docker build -t $PKG_NAME:test_$CX_CLI_VERSION -f Dockerfile-test . --no-cache
+    - name: Build the Docker test image
+      run: docker run $PKG_NAME:test_$CX_CLI_VERSION Scan -CxServer ${{secrets.CX_SAST_SERVER}} -CxUser ${{secrets.CX_SAST_USERNAME}} -CxPassword ${{secrets.CX_SAST_PASSWORD}} -ProjectName "${{secrets.CX_SAST_TEAM}}//$CX_PROJECT_NAME" -LocationType folder -LocationPath ./mycode -Log log.log -v

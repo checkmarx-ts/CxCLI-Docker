@@ -13,8 +13,15 @@ ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-202
 
 WORKDIR /opt
 
-COPY *.crt *.cer import_certs.sh /certs/
+# Certificates
+COPY *.crt *.cer import_certs.sh ./certs/
 
+RUN cd certs && \
+    chmod +x import_certs.sh && \
+    ./import_certs.sh && \
+    cd ..
+
+# CLI
 RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
     curl ${CX_CLI_URL} -o cli.zip && \
     unzip cli.zip -d cli_tmp  && \
