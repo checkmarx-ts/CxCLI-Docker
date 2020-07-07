@@ -31,19 +31,19 @@ if sys.argv[1].lower() == 'localcheckout':
 
     args = func(normalizedArgs, workspaceDir)
 
+    postFetchScripts = os.listdir ("/post-fetch")
+
+    postArgs = [workspaceDir, locationTypeValue]
+
+    for entry in postFetchScripts:
+        if not os.path.isdir(entry) and os.access(entry, os.X_OK):
+            code = subprocess.run ([os.path.join("/post-fetch", entry)] + postArgs).returncode
+            if code != 0:
+                print (f'Execution of {entry} failed with value {code}')
+
 else:
     args = sys.argv[1:]
 
-
-postFetchScripts = os.listdir ("/post-fetch")
-
-postArgs = [workspaceDir, locationTypeValue]
-
-for entry in postFetchScripts:
-    if not os.path.isdir(entry) and os.access(entry, os.X_OK):
-        code = subprocess.run ([os.path.join("/post-fetch", entry)] + postArgs).returncode
-        if code != 0:
-            print (f'Execution of {entry} failed with value {code}')
 
 process = subprocess.run(["/opt/cxcli/runCxConsole.sh"] + args)
 
