@@ -25,6 +25,7 @@ latest (9.0) : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020
 2020.2.7 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.7.zip
 
 2020.2.3 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.3.zip
+<<<<<<< HEAD
 
 2020.1.12 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.1.12.zip
 
@@ -34,6 +35,17 @@ latest (9.0) : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020
 
 8.90.2 : https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
 
+=======
+
+2020.1.12 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.1.12.zip
+
+9.00.2 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.2.zip
+
+9.00.1 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.1.zip
+
+8.90.2 : https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip
+
+>>>>>>> master
 8.80.4 : https://download.checkmarx.com/8.8.0/Plugins/CxConsolePlugin-8.80.4.zip
 
 #### CxCLI Documentation: 
