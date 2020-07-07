@@ -1,5 +1,6 @@
 from . import utils
 import subprocess
+import os
 from yarl import URL
 
 
@@ -47,7 +48,7 @@ def localcheckout (args, workspaceDir):
         exit(1)
     else:
         gitArray.append ('--branch')
-        gitArray.append (args[locationBranchIndex + 1])
+        gitArray.append (os.path.basename(args[locationBranchIndex + 1]))
     
     gitArray.append (str(url))
     gitArray.append (path)
