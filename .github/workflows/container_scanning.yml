@@ -19,7 +19,7 @@ jobs:
     - uses: anchore/scan-action@master
       with:
         dockerfile-path: "Dockerfile"
-        image-reference: "openjdk:8-jdk-alpine"
+        image-reference: "openjdk:oraclelinux7"
         fail-build: false
     - name: Upload Anchore Vulnerabilities
       uses: actions/upload-artifact@v2.0.1
