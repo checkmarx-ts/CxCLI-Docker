@@ -8,7 +8,7 @@ RUN rpm --import https://package.perforce.com/perforce.pubkey && \
     yum install -y curl python python3 jq helix-cli git unzip && \
     yum clean all
 
-ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
+ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.3.1.zip"
 
 # Certificates
 COPY *.crt *.cer import_certs.sh /certs/

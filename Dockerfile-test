@@ -8,5 +8,5 @@ WORKDIR /opt
 
 #Copy Code
 
-COPY . ./mycode/
+#COPY . ./mycode/
 
