@@ -6,6 +6,8 @@ RUN rpm --import https://package.perforce.com/perforce.pubkey && \
     yum install -y curl python python3 jq helix-cli git unzip gcc && \
     yum clean all
 
+RUN pip3 install yarl
+
 ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
 
 # Certificates
@@ -23,24 +25,24 @@ RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
 RUN echo Unzipping cli.zip && \
     unzip cli.zip -d cli_tmp  && \
     rm -f cli.zip && \
-    ( [ -d cli_tmp/CxConsolePlugin-* ] && { mv cli_tmp/CxConsolePlugin-* /opt/cxcli; rm -rf cli_tmp; } || { mkdir /opt/cxcli ; cp -r cli_tmp/* /opt/cxcli; rm -rf cli_tmp; } ) && \ 
-    cd cxcli
-    
+    ( [ -d cli_tmp/CxConsolePlugin-* ] && { mv cli_tmp/CxConsolePlugin-* /opt/cxcli; rm -rf cli_tmp; } || { mkdir /opt/cxcli ; cp -r cli_tmp/* /opt/cxcli; rm -rf cli_tmp; } )
+
 RUN echo Clear Up cli folder && \
     # Fix DOS/Windows EOL encoding, if it exists
+    cd cxcli && \
     cat -v runCxConsole.sh | sed -e "s/\^M$//" > runCxConsole-fixed.sh && \ 
     rm -f runCxConsole.sh && \
     mv runCxConsole-fixed.sh runCxConsole.sh && \
     rm -rf Examples && \
+    ls -la && \
     chmod +x runCxConsole.sh && \
     mkdir /post-fetch
 
 RUN echo Importing Certificates && \
     /certs/import_certs.sh
-    
-RUN pip3 install yarl
 
 COPY scripts/* /opt/cxcli/
+
 RUN chmod +x /opt/cxcli/entry.sh
 
 WORKDIR /opt/cxcli
