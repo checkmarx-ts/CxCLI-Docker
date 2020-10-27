@@ -9,7 +9,7 @@ jobs:
   latest:
     env:
       CX_CLI_VERSION: "latest"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.3.1.zip"
+      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

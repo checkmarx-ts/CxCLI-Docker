@@ -1,14 +1,14 @@
 FROM openjdk:oraclelinux7
 
-LABEL Miguel Freitas <miguel.freitas@checkmarx.com>
-
 COPY scm_support/perforce/perforce.repo /etc/yum.repos.d/
 
 RUN rpm --import https://package.perforce.com/perforce.pubkey && \
     yum install -y curl python python3 jq helix-cli git unzip yarl && \
     yum clean all
 
-ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.3.1.zip"
+RUN pip3 install yarl
+
+ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
 
 # Certificates
 COPY *.crt *.cer import_certs.sh /certs/
@@ -20,21 +20,29 @@ WORKDIR /opt
 
 # CLI
 RUN echo Downloading CLI plugin from ${CX_CLI_URL} && \
-    curl ${CX_CLI_URL} -o cli.zip && \
+    curl ${CX_CLI_URL} -o cli.zip
+
+RUN echo Unzipping cli.zip && \
     unzip cli.zip -d cli_tmp  && \
     rm -f cli.zip && \
-    ( [ -d cli_tmp/CxConsolePlugin-* ] && { mv cli_tmp/CxConsolePlugin-* /opt/cxcli; rm -rf cli_tmp; } || { mkdir /opt/cxcli ; cp -r cli_tmp/* /opt/cxcli; rm -rf cli_tmp; } ) && \ 
-    cd cxcli && \
+    ( [ -d cli_tmp/CxConsolePlugin-* ] && { mv cli_tmp/CxConsolePlugin-* /opt/cxcli; rm -rf cli_tmp; } || { mkdir /opt/cxcli ; cp -r cli_tmp/* /opt/cxcli; rm -rf cli_tmp; } )
+
+RUN echo Clear Up cli folder && \
     # Fix DOS/Windows EOL encoding, if it exists
-    cat -v runCxConsole.sh | sed -e "s/\^M$//" > runCxConsole-fixed.sh && \
+    cd cxcli && \
+    cat -v runCxConsole.sh | sed -e "s/\^M$//" > runCxConsole-fixed.sh && \ 
     rm -f runCxConsole.sh && \
     mv runCxConsole-fixed.sh runCxConsole.sh && \
     rm -rf Examples && \
+    ls -la && \
     chmod +x runCxConsole.sh && \
-    mkdir /post-fetch && \
+    mkdir /post-fetch
+
+RUN echo Importing Certificates && \
     /certs/import_certs.sh
 
 COPY scripts/* /opt/cxcli/
+
 RUN chmod +x /opt/cxcli/entry.sh
 
 WORKDIR /opt/cxcli
