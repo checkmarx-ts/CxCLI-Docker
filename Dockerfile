@@ -3,8 +3,9 @@ FROM openjdk:oraclelinux7
 COPY scm_support/perforce/perforce.repo /etc/yum.repos.d/
 
 RUN rpm --import https://package.perforce.com/perforce.pubkey && \
-    yum install -y curl python python3 jq helix-cli git unzip yarl && \
-    yum clean all
+    yum install -y curl python python3 jq helix-cli git unzip && \
+    yum clean all && \
+    YARL_NO_EXTENSIONS=1 MULTIDICT_NO_EXTENSIONS=1 pip3 install yarl 2> /dev/null
 
 ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
 
