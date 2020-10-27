@@ -3,7 +3,7 @@ FROM openjdk:oraclelinux7
 COPY scm_support/perforce/perforce.repo /etc/yum.repos.d/
 
 RUN rpm --import https://package.perforce.com/perforce.pubkey && \
-    yum install -y curl python python3 jq helix-cli git unzip gcc && \
+    yum install -y curl python python3 jq helix-cli git unzip yarl && \
     yum clean all
 
 RUN pip3 install yarl
@@ -49,6 +49,14 @@ WORKDIR /opt/cxcli
 
 ENTRYPOINT ["/opt/cxcli/entry.sh"]
 
-ONBUILD COPY *.crt /certs/
-ONBUILD COPY *.cer /certs/
-ONBUILD RUN /certs/import_certs.sh
+# Workaround to Docker failing to build derived containers
+# if no certificate files are available.
+ONBUILD COPY ./* /certs_staging/
+ONBUILD RUN \
+            ( [ -f /cert_staging/*.crt ] && cp /cert_staging/*.crt -t /certs/  || continue ) && \
+            ( [ -f /cert_staging/*.cer ] && cp /cert_stagins/*.cer /certs/  || continue) && \
+            /certs/import_certs.sh && \
+            ( [ -f /certs_staging ] && rm -rf /certs_staging || continue ) && \
+            . /dev/null
+
+

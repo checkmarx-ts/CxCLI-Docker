@@ -45,11 +45,19 @@ latest (2020.4.4) : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin
 https://checkmarx.atlassian.net/wiki/spaces/KC/pages/44335590/CxSAST+CLI+Guide
 
 
-### Importing Custom CA Certificates
+## Importing Custom CA Certificates
 
-Any binary DER encoded X.509 certificates in files ending in *.cer or *.crt will be imported from the build directory at the time the image build is executed.
 
-### Build with latest plugin:
+### Building from Source
+
+If you are building the docker image from the source, any binary DER encoded X.509 certificates in files located in the root directory ending in *.cer or *.crt will be added to the list of Java trusted CAs.  Place the certificate files in the build directory at the time the image build is executed.
+
+### Building a Derived Container
+
+If you are building a container derived from the pre-built CxCLI docker container (e.g. `FROM docker.pkg.github.com/checkmarx-ts/cxcli-docker/cxcli:latest`), any *.crt or *.cer files in the build root directory will automatically be imported to the list of Java trusted CAs.  This is done through build triggers that are executed prior to the custom image build.
+
+
+## Build with latest plugin:
 
 With Docker Compose:
 ```sh
@@ -62,7 +70,7 @@ With Docker:
 docker build -t cxcli:latest . --no-cache
 ```
 
-### Build with an older version of the plugin:
+## Build with an older version of the plugin:
 With Docker Compose:
 ```sh
 docker-compose build cxcli_{version}
@@ -75,7 +83,7 @@ With Docker:
 docker build --build-arg CX_CLI_URL="{download url}" -t cxcli:{version} . --no-cache
 ```
 
-### Run Container:
+## Run Container:
 With Docker Compose:
 ```sh
 docker-compose up cxcli_{version}
