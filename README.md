@@ -18,7 +18,9 @@ FROM docker.pkg.github.com/checkmarx-ts/cxcli-docker/cxcli:latest
 ```
 
 ### CLI Download Links used:
-latest (2020.3.1) : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.3.1.zip
+latest (2020.4.4) : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip
+
+2020.4.4 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip
 
 2020.3.1 : https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.3.1.zip
 
