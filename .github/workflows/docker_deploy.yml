@@ -3,6 +3,7 @@ env:
   DOCKER_GITHUB: "docker.pkg.github.com"
   PKG_NAME: "cxcli"
   REPOSITORY: "checkmarx-ts/cxcli-docker"
+  CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
 on:
   push:
     branches: 
@@ -11,7 +12,6 @@ jobs:
   latest:
     env:
       CX_CLI_VERSION: "latest"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -30,178 +30,6 @@ jobs:
   "_2020_4_4":
     env:
       CX_CLI_VERSION: "2020.4.4"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_2020_3_1":
-    env:
-      CX_CLI_VERSION: "2020.3.1"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.3.1.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_2020_2_18":
-    env:
-      CX_CLI_VERSION: "2020.2.18"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.18.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_2020_2_7":
-    env:
-      CX_CLI_VERSION: "2020.2.7"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.7.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_2020_2_3":
-    env:
-      CX_CLI_VERSION: "2020.2.3"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.2.3.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_2020_1_12":
-    env:
-      CX_CLI_VERSION: "2020.1.12"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.1.12.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_9_00_2":
-    env:
-      CX_CLI_VERSION: "9.00.2"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.2.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_9_00_1":
-    env:
-      CX_CLI_VERSION: "9.00.1"
-      CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-9.00.1.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_8_90_2":
-    env:
-      CX_CLI_VERSION: "8.90.2"
-      CX_CLI_URL: "https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.2.zip"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: |
-        docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
-    - name: Tag Docker Image 
-      run: |
-        docker tag $PKG_NAME:$CX_CLI_VERSION $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-    - name: Docker Login
-      run: |
-        docker login $DOCKER_GITHUB -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}}
-    - name: Docker Push
-      run: |
-        docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_8_80_4":
-    env:
-      CX_CLI_VERSION: "8.80.4"
-      CX_CLI_URL: "https://download.checkmarx.com/8.8.0/Plugins/CxConsolePlugin-8.80.4.zip"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
