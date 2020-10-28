@@ -1,3 +1,5 @@
+![Docker Image CI](https://github.com/checkmarx-ts/CxCLI-Docker/workflows/Docker%20Image%20CI/badge.svg)
+
 # CxCLI-Docker
 ### Available Versions
 
