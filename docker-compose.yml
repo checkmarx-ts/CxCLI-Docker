@@ -7,6 +7,14 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+  cxcli_2020.4.12:
+    image: cxcli:2020.4.12
+    container_name: cxcli_2020.4.12
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        CX_CLI_URL: https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.12.zip
   cxcli_2020.4.4:
     image: cxcli:2020.4.4
     container_name: cxcli_2020.4.4

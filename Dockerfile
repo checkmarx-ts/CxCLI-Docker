@@ -7,7 +7,7 @@ RUN rpm --import https://package.perforce.com/perforce.pubkey && \
     yum clean all && \
     YARL_NO_EXTENSIONS=1 MULTIDICT_NO_EXTENSIONS=1 pip3 install yarl 2> /dev/null
 
-ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.4.zip"
+ARG CX_CLI_URL="https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.12.zip"
 
 # Certificates
 COPY *.crt *.cer import_certs.sh /certs/
