@@ -4,7 +4,7 @@ env:
   DOCKER_GITHUB: "docker.pkg.github.com"
   PKG_NAME: "cxcli"
   REPOSITORY: "checkmarx-ts/cxcli-docker"
-  CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2020.4.12.zip"
+  CX_CLI_URL: "https://download.checkmarx.com/9.0.0/Plugins/CxConsolePlugin-2021.1.1.zip"
 
 on:
   push:
@@ -30,9 +30,9 @@ jobs:
     - name: Docker Push
       run: |
         docker push $DOCKER_GITHUB/$REPOSITORY/$PKG_NAME:$CX_CLI_VERSION
-  "_2020_4_12":
+  "_2021_1_1":
     env:
-      CX_CLI_VERSION: "2020.4.12"
+      CX_CLI_VERSION: "2021.1.1"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
