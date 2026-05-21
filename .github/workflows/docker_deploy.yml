@@ -15,9 +15,9 @@ jobs:
   latest:
     env:
       CX_CLI_VERSION: "latest"
-    runs-on: ubuntu-latest
+    runs-on: cx-public-ubuntu-x64
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
@@ -33,9 +33,9 @@ jobs:
   "_2021_1_1":
     env:
       CX_CLI_VERSION: "2021.1.1"
-    runs-on: ubuntu-latest
+    runs-on: cx-public-ubuntu-x64
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
     - name: Build the Docker image
       run: |
         docker build -t $PKG_NAME:$CX_CLI_VERSION . --no-cache --build-arg CX_CLI_URL=$CX_CLI_URL
